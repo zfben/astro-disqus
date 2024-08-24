@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/npm/l/astro-disqus.svg)](https://github.com/zfben/astro-disqus/blob/main/LICENSE)
 [![NPM Version](https://img.shields.io/npm/v/astro-disqus.svg)](https://www.npmjs.com/package/astro-disqus)
 
-Add [Disqus] to your [Astro](https://astro.build/) website.
+Add [Disqus](https://disqus.com/) to your [Astro](https://astro.build/) website.
 
 ## Key Features
 
