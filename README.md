@@ -26,8 +26,8 @@ import { Disqus } from "astro-disqus";
 ## Supported Props
 
 Prop | Description
--- | -- | --
-`embed` | The embed url, like https://demo.disqus.com/embed.js, **required**
+-- | --
+`embed` |  **required** The embed url, like `https://demo.disqus.com/embed.js`
 `url` | The page url
 `class` | The class name of the container
 `style` | The style of the container
