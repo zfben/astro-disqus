@@ -1,0 +1,68 @@
+---
+interface Props {
+  /** Page url */
+  url?: string;
+  /** The embed url, like https://demo.disqus.com/embed.js */
+  embed: `https://${string}.disqus.com/embed.js`;
+  /**
+   * The style to apply to the Disqus container.
+   */
+  style?: string;
+  /**
+   * The class name to apply to the Disqus container.
+   */
+  class?: string;
+}
+
+const { url, embed, style } = Astro.props;
+---
+
+<div id="disqus_thread" class={Astro.props.class} style={style}></div>
+<script is:inline define:vars={{ url, embed }}>
+  if (url)
+    window.disqus_config = function () {
+      this.page.url = url;
+      this.page.identifier = url;
+    };
+  if (!window.DisqusWidget) {
+    window.DisqusWidget = {
+      overwriteGlobalSelectors: function () {
+        window.$disqus = document.querySelector("#disqus_thread");
+      },
+      init: function () {
+        this.overwriteGlobalSelectors();
+        this.addListeners();
+        this.initDisqus();
+      },
+      addListeners: function () {
+        document.addEventListener("astro:page-load", () => {
+          console.log("astro:page-load");
+          this.overwriteGlobalSelectors();
+          this.initDisqus();
+        });
+      },
+      initDisqus: () => {
+        if (window.$disqus === null) {
+          return;
+        }
+
+        if (window.DISQUS) {
+          window.DISQUS.reset({
+            reload: true,
+          });
+          return;
+        }
+
+        (function () {
+          const d = document,
+            s = d.createElement("script");
+          s.src = embed;
+          s.setAttribute("data-timestamp", String(+new Date()));
+          (d.head || d.body).appendChild(s);
+        })();
+      },
+    };
+
+    window.DisqusWidget.init();
+  }
+</script>

@@ -1,0 +1,29 @@
+{
+  "name": "astro-disqus",
+  "description": "Add Disqus to your Astro site",
+  "keywords": [
+    "astro",
+    "disqus"
+  ],
+  "version": "1.0.1",
+  "license": "MIT",
+  "exports": "./src/index.ts",
+  "homepage": "https://github.com/zfben/astro-disqus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zfben/astro-disqus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zfben/astro-disqus/issues"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "astro build",
+    "test": "node cases.mjs"
+  },
+  "devDependencies": {
+    "astro": "*"
+  }
+}
